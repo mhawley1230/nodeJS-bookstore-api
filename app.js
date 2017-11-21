@@ -96,6 +96,16 @@ app.put('/api/books/:_id', function(req, res) {
   });
 });
 
+app.delete('/api/books/:_id', function(req, res) {
+  var id = req.params._id;
+  Book.removeBook(id, function(err, book) {
+    if(err){
+      throw err
+    }
+    res.json(book);
+  });
+});
+
 
 app.listen(3000);
 console.log('Running on port 3000...');
